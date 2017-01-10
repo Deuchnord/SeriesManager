@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-15988f98c43-660197402f4df438" provider="generic" driver="sqlite_jdbc" name="SQLite - data.db3" save-password="true" show-system-objects="true" read-only="false">
+		<connection server="" database="/home/m2eserv/tanghe/workspace/symfony/tvseries/app/data.db3" url="jdbc:sqlite:/home/m2eserv/tanghe/workspace/symfony/tvseries/app/data.db3" type="dev"/>
+	</data-source>
+</data-sources>

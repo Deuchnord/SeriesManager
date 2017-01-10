@@ -1,0 +1,60 @@
+<?php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TV Series.
+ * 
+ * @author Jérôme Deuchnord <deuchnord@oulook.fr>
+ * @ORM\Entity
+ *
+ */
+class TvSeries
+{
+	/**
+	 * 
+	 * @var string
+	 * @ORM\Id()
+	 * @ORM\GeneratedValue(strategy="UUID")
+	 * @ORM\Column(type="guid")
+	 */
+	private $id;
+	
+	/**
+	 * 
+	 * @var string
+	 * @ORM\Column(type="string")
+	 */
+	private $name;
+	
+	/**
+	 * 
+	 * @var string
+	 * @ORM\Column(type="string")
+	 */
+	private $author;
+	
+	/**
+	 * 
+	 * @var \DateTimeInterface
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	private $releasedAt;
+	
+	/**
+	 * 
+	 * @var string
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $description;
+	
+	/**
+	 * 
+	 * @var string
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $image;
+	
+	
+}
