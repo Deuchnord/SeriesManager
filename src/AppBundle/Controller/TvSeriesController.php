@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Tvseries controller.
  *
- * @Route("tvseries")
+ * @Route("series")
  */
 class TvSeriesController extends Controller
 {

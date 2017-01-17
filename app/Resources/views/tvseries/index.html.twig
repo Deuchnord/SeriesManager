@@ -1,39 +1,24 @@
 {% extends 'base.html.twig' %}
+{% set title = "Mes séries" %}
 
 {% block body %}
-    <h1>Tvseries list</h1>
+    <h1>Mes séries</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Releasedat</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Actions</th>
+                <th>Série</th>
+                <th>Réalisateur</th>
+                <th>Année</th>
             </tr>
         </thead>
         <tbody>
         {% for tvSeries in tvSeries %}
             <tr>
-                <td><a href="{{ path('tvseries_show', { 'id': tvSeries.id }) }}">{{ tvSeries.id }}</a></td>
-                <td>{{ tvSeries.name }}</td>
+                <td><a href="{{ path('tvseries_show', { 'id': tvSeries.id }) }}">{{ tvSeries.name }}</a></td>
                 <td>{{ tvSeries.author }}</td>
-                <td>{% if tvSeries.releasedAt %}{{ tvSeries.releasedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ tvSeries.description }}</td>
+                <td>{% if tvSeries.releasedAt %}{{ tvSeries.releasedAt|date('Y') }}{% endif %}</td>
                 <td>{{ tvSeries.image }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tvseries_show', { 'id': tvSeries.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tvseries_edit', { 'id': tvSeries.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>

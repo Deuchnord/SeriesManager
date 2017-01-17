@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Deuchnord Series Manager{% endblock %}</title>
+        <title>{{ title }}{% if title is defined %} - {% endif %}Deuchnord Series Manager</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
