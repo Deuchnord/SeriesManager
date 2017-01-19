@@ -7,6 +7,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    	<header>
+    		<h1><a href="{{ path('tvseries_index') }}"><img src="{{ asset('app-logo.png') }}" alt="Deuchnord Series Manager" /></a></h1>
+    	</header>
+    	
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
