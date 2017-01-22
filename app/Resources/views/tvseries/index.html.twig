@@ -1,32 +1,25 @@
 {% extends 'base.html.twig' %}
-{% set title = "Mes séries" %}
+{% set title = "My Series" %}
 
 {% block body %}
-    <h2>Tvseries list</h2>
+    <h2>My Series</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Série</th>
-                <th>Réalisateur</th>
-                <th>Année</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tvSeries in tvSeries %}
-            <tr>
-                <td><a href="{{ path('tvseries_show', { 'id': tvSeries.id }) }}">{{ tvSeries.name }}</a></td>
-                <td>{{ tvSeries.author }}</td>
-                <td>{% if tvSeries.releasedAt %}{{ tvSeries.releasedAt|date('Y') }}{% endif %}</td>
-                <td>{{ tvSeries.image }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('tvseries_new') }}">Create a new tvSeries</a>
-        </li>
-    </ul>
+	<div class="row">
+{% for tvSeries in tvSeries %}
+    	<div class="col s12 m6">
+            <div class="small card">
+            	<div class="card-image">
+            		<img src="{{ tvSeries.image }}" alt="{{ tvSeries.name }}" />
+            		<span class="card-title">{{ tvSeries.name }}</span>
+            	</div>
+            	<div class="card-content">
+            	    {{ tvSeries.description }}
+        	    </div>
+            	<div class="card-action">
+            		<a href="{{ path('tvseries_show', { 'id': tvSeries.id }) }}" class="blue-text darken-4">More information</a>
+        		</div>
+        	</div>
+    	</div>
+{% endfor %}
+    </div>
 {% endblock %}

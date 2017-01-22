@@ -1,49 +1,28 @@
 {% extends 'base.html.twig' %}
 {% set title = tvSeries.name %}
 
+{% block custom_icons_before_new %}
+	<li><a href="{{ path('tvseries_edit', { 'id': tvSeries.id }) }}"><i class="large material-icons">mode_edit</i></a></li>
+	<li><a href="{{ path('tvseries_delete', { 'id': tvSeries.id }) }}"><i class="large material-icons">delete</i></a></li>
+{% endblock %}
+
 {% block body %}
-    <h1>Tvseries</h1>
+	<div class="parallax-container">
+		<div class="parallax">
+			<img src="{{ tvSeries.image }}" />
+		</div>
+	</div>
+    <h1>{{ tvSeries.name }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tvSeries.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ tvSeries.name }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ tvSeries.author }}</td>
-            </tr>
-            <tr>
-                <th>Releasedat</th>
-                <td>{% if tvSeries.releasedAt %}{{ tvSeries.releasedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ tvSeries.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ tvSeries.image }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('tvseries_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('tvseries_edit', { 'id': tvSeries.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <p>By {{ tvSeries.author }}</p>
+    {% if tvSeries.releasedAt %}
+    <p>Released on{{ tvSeries.releasedAt|date('Y-m-d H:i:s') }}</p>
+    {% endif %}
+    <p>{{ tvSeries.description }}</p>
+    
+    <script type="text/javascript">
+    	$(document).ready(() => {
+        	$('.parallax').parallax();
+    	})
+    </script>
 {% endblock %}

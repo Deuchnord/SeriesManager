@@ -2,16 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{{ title }}{% if title is defined %} - {% endif %}Deuchnord Series Manager</title>
+        <title>{% if title is defined %}{{ title }} - {% endif %}Deuchnord Series Manager</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Materialize CSS -->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dsm.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/materialize.min.js') }}"></script>
     </head>
     <body>
-    	<header>
-    		<h1><a href="{{ path('tvseries_index') }}"><img src="{{ asset('app-logo.png') }}" alt="Deuchnord Series Manager" /></a></h1>
-    	</header>
-    	
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    	<div class="navbar-fixed">
+        	<nav>
+        		<div class="nav-wrapper blue darken-1">
+        			<a href="{{ path('tvseries_index') }}" class="brand-logo">
+        				<img src="{{ asset('app-logo.png') }}" alt="Deuchnord Series Manager" style="height: 64px" />
+    				</a>
+        			<ul id="nav-mobile" class="right">
+        				{% block custom_icons_before_new %}{% endblock %}
+        				<li><a href="{{ path('tvseries_new') }}" title="Add a new TV series"><i class="large material-icons">add</i></a></li>
+        				{% block custom_icons_after_new %}{% endblock %}
+        			</ul>
+        		</div>
+        	</nav>
+    	</div>
+    	<div class="container">
+    		
+        	
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>
     </body>
 </html>
