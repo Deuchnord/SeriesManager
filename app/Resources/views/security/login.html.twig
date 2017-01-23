@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% set title = "Log in" %}
+
+{% block body %}
+
+<h1>Log in</h1>
+
+<div class="row">
+    <form action="{{ path('login') }}" method="post">
+		<div class="input-field col s6">
+			<label for="username">Your username</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Your username" class="validate" autofocus />
+    	</div>
+    	<div class="input-field col s6">
+    		<label for="password">Your password</label>
+            <input type="password" id="password" name="_password" placeholder="Your password" class="validate" />
+      	</div>
+        <button type="submit" class=" input-field col s6 right waves-effect waves-light btn">login</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	Materialize.updateTextFields();
+});
+</script>
+
+{% endblock %}
