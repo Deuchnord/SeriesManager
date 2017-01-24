@@ -1,22 +1,38 @@
 {% extends 'base.html.twig' %}
 {% set title = "Log in" %}
+{% set bodyClass = "login" %}
+{% set containerClass="row blue lighten-5" %}
+{% set noMenu = 1 %}
+{% block menuColor %}white{% endblock %}
 
 {% block body %}
 
-<h1>Log in</h1>
+<div>
+	<h1>Series Manager</h1>
+	<p>Welcome on Series Manager! Please Log in to continue.</p>
 
-<div class="row">
-    <form action="{{ path('login') }}" method="post">
+	{% if error %}
+	<div class="card-panel red white-text">
+		{{ error.messageKey }}
+	</div>
+	{% endif %}
+	<form action="{{ path('login') }}" method="post">
 		<div class="input-field col s6">
-			<label for="username">Your username</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Your username" class="validate" autofocus />
-    	</div>
-    	<div class="input-field col s6">
-    		<label for="password">Your password</label>
-            <input type="password" id="password" name="_password" placeholder="Your password" class="validate" />
-      	</div>
-        <button type="submit" class=" input-field col s6 right waves-effect waves-light btn">login</button>
-    </form>
+			<label for="username">Your username</label> <input type="text"
+				id="username" name="_username" value="{{ last_username }}"
+				placeholder="Your username" class="validate" autofocus />
+		</div>
+		<div class="input-field col s6">
+			<label for="password">Your password</label> <input type="password"
+				id="password" name="_password" placeholder="Your password"
+				class="validate" />
+		</div>
+		<div class="input-field col s6 right">
+			<button type="submit" class="waves-effect waves-light btn">Login</button>
+			<a href="{{ path('user_new') }}"
+				class="waves-effect waves-light btn blue-grey">Subscribe</a>
+		</div>
+	</form>
 </div>
 
 <script type="text/javascript">

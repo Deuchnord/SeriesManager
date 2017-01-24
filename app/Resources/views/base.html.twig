@@ -13,24 +13,24 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>
     </head>
-    <body>
+    <body{% if bodyClass is defined %} class="{{ bodyClass }}"{% endif %}>
     	<div class="navbar-fixed">
         	<nav>
-        		<div class="nav-wrapper blue darken-1">
+        		<div class="nav-wrapper {% block menuColor %}blue darken-1{% endblock %}">
         			<a href="{{ path('tvseries_index') }}" class="brand-logo">
         				<img src="{{ asset('app-logo.png') }}" alt="Deuchnord Series Manager" style="height: 64px" />
     				</a>
+    				{% if noMenu is not defined %}
         			<ul id="nav-mobile" class="right">
         				{% block custom_icons_before_new %}{% endblock %}
         				<li><a href="{{ path('tvseries_new') }}" title="Add a new TV series"><i class="large material-icons">add</i></a></li>
         				{% block custom_icons_after_new %}{% endblock %}
         			</ul>
+        			{% endif %}
         		</div>
         	</nav>
     	</div>
-    	<div class="container">
-    		
-        	
+    	<div class="container{% if containerClass is defined %} {{ containerClass }}{% endif %}">
             {% block body %}{% endblock %}
             {% block javascripts %}{% endblock %}
         </div>

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% set noMenu = 1 %}
+{% block menuColor %}white{% endblock %}
+
+{% block body %}
+    <h1>User creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+{% endblock %}
