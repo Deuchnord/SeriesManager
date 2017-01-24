@@ -1,3 +1,8 @@
 .parallax-container {
 	height: 250px;
 }
+
+.login {
+	background: url("/img/littlehouse.jpg");
+	background-size: 100%;
+}
