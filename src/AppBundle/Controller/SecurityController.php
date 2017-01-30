@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * The security controller
@@ -18,7 +19,10 @@ class SecurityController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{
-		return $this->redirectToRoute("login");
+		if($this->getUser() == null)
+			return $this->redirectToRoute("login");
+		
+			return $this->redirectToRoute("tvseries_index");
 	}
 	
 	/**
@@ -26,6 +30,9 @@ class SecurityController extends Controller
 	 */
 	public function loginAction(Request $request)
 	{
+		if($this->getUser() != null)
+			return $this->redirectToRoute("tvseries_index");
+		
 		$authenticationUtils = $this->get('security.authentication_utils');
 		$error = $authenticationUtils->getLastAuthenticationError();
 		$lastUsername = $authenticationUtils->getLastUsername();
