@@ -21,10 +21,13 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('AppBundle\Form\UserType', $user);
+        $form = $this->createForm('AppBundle\Form\UserType', $user, [ 'subscription' => true ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+        	$user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+        	$user->setRoles([ "ROLE_USER" ]);
+        	
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush($user);

@@ -6,8 +6,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * The security controller
+ * 
+ * @Route("/")
+ */
 class SecurityController extends Controller
 {
+	/**
+	 * @Route("/", name="index")
+	 */
+	public function indexAction(Request $request)
+	{
+		return $this->redirectToRoute("login");
+	}
+	
 	/**
 	 * @Route("/login", name="login")
 	 */

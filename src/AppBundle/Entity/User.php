@@ -2,12 +2,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * @author Jérôme Deuchnord <contact@deuchnord.fr>
  * @ORM\Entity
  */
-class User
+class User implements UserInterface, EquatableInterface
 {
 	/**
 	 * 
@@ -31,6 +33,14 @@ class User
 	 * @ORM\Column(type="string")
 	 */
 	private $password;
+	
+	/**
+	 * 
+	 * @var array
+	 * @ORM\Column(type="array")
+	 * @Required
+	 */
+	private $roles;
 
     /**
      * id
@@ -75,5 +85,45 @@ class User
         $this->password = $password;
         return $this;
     }
+
+	/**
+	 * {@inheritDoc}
+	 * @see \Symfony\Component\Security\Core\User\UserInterface::getRoles()
+	 */
+	public function getRoles() {
+		return $this->roles;
+	}
+	
+	/**
+	 * Sets the user's roles
+	 * @param array $roles
+	 */
+	public function setRoles(array $roles) {
+		$this->roles = $roles;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see \Symfony\Component\Security\Core\User\UserInterface::getSalt()
+	 */
+	public function getSalt() {
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see \Symfony\Component\Security\Core\User\UserInterface::eraseCredentials()
+	 */
+	public function eraseCredentials() {
+		$this->password = "";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see \Symfony\Component\Security\Core\User\EquatableInterface::isEqualTo()
+	 */
+	public function isEqualTo(UserInterface $user) {
+		return ($this->id == $user->getId());
+	}
 
 }
