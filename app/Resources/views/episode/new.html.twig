@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Add an episode <small>to {{ tvSeries.getName() }}</small></h1>
+
+    {{ form_start(form) }}
+    	<div class="row">
+        	<div class="input-field col s4">
+        		{{ form_label(form.season) }}
+        		{{ form_errors(form.season) }}
+        	    {{ form_widget(form.season) }}
+        	</div>
+        	<div class="input-field col s4">
+        		{{ form_label(form.episodeNumber) }}
+        		{{ form_errors(form.episodeNumber) }}
+        		{{ form_widget(form.episodeNumber) }}
+        	</div>
+        	<div class="input-field col s4">
+        		{{ form_label(form.datePublished) }}
+        		{{ form_errors(form.datePublished) }}
+        		{{ form_widget(form.datePublished) }}
+        	</div>
+    	</div>
+    	<div class="row">
+    		<div class="input-field col s6">
+    			{{ form_label(form.name) }}
+    			{{ form_errors(form.name) }}
+    			{{ form_widget(form.name) }}
+    		</div>
+    		<div class="input-field col s6">
+    			{{ form_label(form.image) }}
+    			{{ form_errors(form.image) }}
+    			{{ form_widget(form.image) }}
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="input-field col s12">
+    			{{ form_label(form.description) }}
+    			{{ form_errors(form.description) }}
+    			{{ form_widget(form.description) }}
+    		</div>
+    	</div>
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+    
+    <script type="text/javascript">
+		$('.datepicker').pickadate({
+			selectMonths: true,
+			selectYears: 200
+		})
+    </script>
+{% endblock %}

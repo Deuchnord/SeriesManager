@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\TvSeries;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Episode;
 
 /**
  * Tvseries controller.
@@ -64,12 +66,14 @@ class TvSeriesController extends Controller
      * @Method("GET")
      */
     public function showAction(TvSeries $tvSeries)
-    {
-        $deleteForm = $this->createDeleteForm($tvSeries);
+    {        
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:Episode');
+        $episodes = $repository->findByTvSeries($tvSeries);
 
         return $this->render('tvseries/show.html.twig', array(
             'tvSeries' => $tvSeries,
-            'delete_form' => $deleteForm->createView(),
+        	'episodes' => $episodes
         ));
     }
 

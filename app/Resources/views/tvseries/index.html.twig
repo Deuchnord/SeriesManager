@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
-{% set title = "My Series" %}
+{% set title = "TV Series" %}
 
 {% block body %}
-    <h2>My Series</h2>
+    <h2>TV Series</h2>
+    
+    <p>This page lists all the TV series available on Series Manager.
+    	If yours is not listed, feel free to <a href="{{ path("tvseries_new") }}">add it</a>!</p>
 
 	<div class="row">
 {% for tvSeries in tvSeries %}

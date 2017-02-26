@@ -17,23 +17,23 @@
     	<div class="navbar-fixed">
         	<nav>
         		<div class="nav-wrapper {% block menuColor %}blue darken-1{% endblock %}">
-        			<a href="{{ path('tvseries_index') }}" class="brand-logo">
+        			<a href="{{ path('index') }}" class="brand-logo">
         				<img src="{{ asset('app-logo.png') }}" alt="Deuchnord Series Manager" style="height: 64px" />
     				</a>
-    				{% if noMenu is not defined %}
         			<ul id="nav-mobile" class="right">
+        			{% if noMenu is not defined %}
         				{% block custom_icons_before_new %}{% endblock %}
         				<li><a href="{{ path('tvseries_new') }}" title="Add a new TV series"><i class="large material-icons">add</i></a></li>
         				{% block custom_icons_after_new %}{% endblock %}
-        				{% if app.user is not null %}
+        			{% endif %}
+    				{% if app.user is not null %}
         				<li><a class="dropdown-button" href="#" data-activates="dropdown-user">Welcome, {{ app.user.getUsername() }}</a>
-        				{% endif %}
+    				{% endif %}
         			</ul>
         			{% if app.user is not null %}
         			<ul class="dropdown-content" id="dropdown-user">
         				<li><a href="/logout">Log out</a></li>
         			</ul>
-        			{% endif %}
         			{% endif %}
         		</div>
         	</nav>

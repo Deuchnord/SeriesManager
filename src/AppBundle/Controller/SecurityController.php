@@ -22,7 +22,7 @@ class SecurityController extends Controller
 		if($this->getUser() == null)
 			return $this->redirectToRoute("login");
 		
-			return $this->redirectToRoute("tvseries_index");
+			return $this->redirectToRoute("myseries_index");
 	}
 	
 	/**
@@ -31,7 +31,7 @@ class SecurityController extends Controller
 	public function loginAction(Request $request)
 	{
 		if($this->getUser() != null)
-			return $this->redirectToRoute("tvseries_index");
+			return $this->redirectToRoute("myseries_index");
 		
 		$authenticationUtils = $this->get('security.authentication_utils');
 		$error = $authenticationUtils->getLastAuthenticationError();

@@ -12,6 +12,7 @@
 			<img src="{{ tvSeries.image }}" />
 		</div>
 	</div>
+	
     <h1>{{ tvSeries.name }}</h1>
 
     <p>By {{ tvSeries.author }}</p>
@@ -19,6 +20,33 @@
     <p>Released on{{ tvSeries.releasedAt|date('Y-m-d H:i:s') }}</p>
     {% endif %}
     <p>{{ tvSeries.description }}</p>
+    
+    <hr />
+    
+    <h2>Episodes</h2>
+    
+    <div class="fixed-action-btn">
+    	<a href="{{ path('episode_new', { 'tvSeries': tvSeries.id }) }}" title="Add new episode" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a>
+    </div>
+    
+    <table>
+    	<thead>
+        	<tr>
+        		<th>#</th>
+        		<th>Title</th>
+        		<th></th>
+        	</tr>
+    	</thead>
+    	<tbody>
+{% for episode in episodes %}
+    		<tr id="episode{{ episode.getEpisodeNumber() }}">
+    			<td><a href="#episode{{ episode.getEpisodeNumber() }}">{{ episode.getEpisodeNumber() }}</a></td>
+    			<td>{{ episode.getName() }}</td>
+    			<td class="right"><a href="{{ path('episode_watched', { 'tvSeries': tvSeries.id, 'episode': episode.id }) }}" class="blue-grey lighten-5 blue-grey-text text-darken-4 waves-effect wave-light btn">{#<i class="material-icons left">done</i>#}set watched</a></td>
+    		</tr>
+{% endfor %}
+		</tbody>
+    </table>
     
     <script type="text/javascript">
     	$(document).ready(() => {

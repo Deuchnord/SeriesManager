@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TV Series.
  * 
- * @author Jérôme Deuchnord <deuchnord@oulook.fr>
+ * @author Jérôme Deuchnord <deuchnord@outlook.fr>
  * @ORM\Entity
  *
  */
@@ -191,5 +191,10 @@ class TvSeries
     public function getImage()
     {
         return $this->image;
+    }
+    
+    public function __toString()
+    {
+    	return $this->name;
     }
 }
